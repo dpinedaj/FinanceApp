@@ -22,11 +22,17 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions, routers, serializers, viewsets
 
-#Import main settings
+# Import main settings
 from FinanceApp import settings
 
-#Import Spendings views
+# Import Spendings views
 from spendings.views import SpendTypesView, SpendsView
+
+# Import Incomes views
+from incomes.views import IncomeTypesView, IncomesView
+
+# Import Investments views
+from investments.views import InvestmentStatusTypesView, InvestmentPaymentsView, InvestmentsView, InvestmentTypesView
 
 
 # Serializers define the API representation.
@@ -41,14 +47,27 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 
 # Spendings
-router.register('SpendTypes', SpendTypesView)
-router.register('Spendings', SpendsView)
+spend_namespace = "spendings"
+router.register(spend_namespace + '/Types', SpendTypesView)
+router.register(spend_namespace, SpendsView)
 
+# Incomes
+incom_namespace = "incomes"
+router.register(incom_namespace + '/Types', IncomeTypesView)
+router.register(incom_namespace, IncomesView)
+
+#Investments
+invest_namespace = "investments"
+router.register(invest_namespace + '/Types', InvestmentTypesView)
+router.register(invest_namespace, InvestmentsView)
+router.register(invest_namespace + '/StatusTypes', InvestmentStatusTypesView)
+router.register(invest_namespace + '/Payments', InvestmentPaymentsView)
 
 schema_view = get_schema_view(
     openapi.Info(

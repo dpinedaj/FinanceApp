@@ -13,13 +13,18 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import environ
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
-environ.Env.read_env()
+
+DEBUG = os.environ.get("DEBUG", False)
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 
-DEBUG = env('DEBUG')
+# env = environ.Env(
+#     DEBUG=(bool, False)
+# )
+# environ.Env.read_env()
+# 
+# 
+# DEBUG = env('DEBUG')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,7 +33,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,6 +53,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'spendings',
+    'incomes',
+    "investments",
 ]
 
 REST_FRAMEWORK = {
@@ -91,17 +98,27 @@ WSGI_APPLICATION = 'FinanceApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': env('DB_ENGINE'),
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
-    },
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': env('DB_ENGINE'),
+#         'NAME': env('DB_NAME'),
+#         'USER': env('DB_USER'),
+#         'PASSWORD': env('DB_PASSWORD'),
+#         'HOST': env('DB_HOST'),
+#         'PORT': env('DB_PORT'),
+#     },
+# }
 
+DATABASES = {
+     'default': {
+         'ENGINE': os.environ['DB_ENGINE'],
+         'NAME': os.environ['POSTGRES_DB'],
+         'USER': os.environ['POSTGRES_USER'],
+         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+         'HOST': os.environ['DB_HOST'],
+         'PORT': os.environ['DB_PORT'],
+     },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
