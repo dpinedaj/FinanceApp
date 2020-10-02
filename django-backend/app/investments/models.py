@@ -1,4 +1,5 @@
 from django.db import models
+from constants import cts
 
 
 class InvestmentTypes(models.Model):
@@ -13,7 +14,7 @@ class InvestmentTypes(models.Model):
     name = models.CharField(max_length=50, null=False)
 
     class Meta:
-        db_table = "investment_types"
+        db_table = f'"{cts.DATASCHEMA}"."investment_types"'
 
     def __str__(self):
         return "{} - {}".format(self.id, self.name)
@@ -24,7 +25,7 @@ class InvestmentStatusTypes(models.Model):
     name = models.CharField(max_length=50, null=False)
 
     class Meta:
-        db_table = "investment_status_types"
+        db_table = f'"{cts.DATASCHEMA}"."investment_status_types"'
 
     def __str__(self):
         return "{} - {}".format(self.id, self.name)
@@ -49,7 +50,7 @@ class Investments(models.Model):
     close_date = models.DateTimeField(null=True)
 
     class Meta:
-        db_table = "investments"
+        db_table = f'"{cts.DATASCHEMA}"."investments"'
 
     def __str__(self):
         return "{}_{}_{}_{}_{}_{}".format(
@@ -68,7 +69,7 @@ class InvestmentPayments(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
-        db_table = "investment_payments"
+        db_table = f'"{cts.DATASCHEMA}"."investment_payments"'
 
     def __str__(self):
         return "{}_{}_{}".format(self.investment_id, self.amount, self.date)

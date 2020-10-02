@@ -4,10 +4,11 @@ services:
     image: "postgres"
     container_name: "postgres"
     env_file:
-      - ./.env
+      - ./config/.env
     ports:
       - "5432:5432"
-    #volumes:
+    volumes:
+      - ./config/init_psql.sql:/docker-entrypoint-initdb.d/init_psql.sql
     #  - ./postgres:/var/lib/postgresql/data
 
   pgadmin:
@@ -15,7 +16,7 @@ services:
     container_name: 'pgadmin'
     #restart: always
     env_file:
-      - ./.env
+      - ./config/.env
     ports:
       - "8084:80"
     depends_on:
@@ -26,7 +27,7 @@ services:
     build: ./django-backend/.
     container_name: backend
     env_file:
-      - ./.env
+      - ./config/.env
     ports:
       - 8000:8000
     depends_on:

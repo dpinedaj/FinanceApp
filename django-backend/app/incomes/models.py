@@ -1,4 +1,5 @@
 from django.db import models
+from constants import cts
 
 
 class IncomeTypes(models.Model):
@@ -13,10 +14,11 @@ class IncomeTypes(models.Model):
     name = models.CharField(max_length=50, null=False)
 
     class Meta:
-        db_table = "income_types"
+        db_table = f'"{cts.DATASCHEMA}"."income_types"'
 
     def __str__(self):
         return "{} - {}".format(self.id, self.name)
+
 
 class Incomes(models.Model):
     """
@@ -34,4 +36,4 @@ class Incomes(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
-        db_table = "incomes"
+        db_table = f'"{cts.DATASCHEMA}"."incomes"'

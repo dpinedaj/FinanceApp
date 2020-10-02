@@ -1,25 +1,10 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import ReactTable from "react-table";
-import 'react-table/react-table.css'
+import FullTable from "../Utils/FullTable";
 
 export default class SpendingsFullTable extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            spendings: [],
-            loading: true
-        }
-    }
-    async getSpendingsData() {
-        const res = await axios.get('/spendings')
-        console.log(res.data)
-        this.setState({ loading: false, spendings: res.data })
-    }
-    componentDidMount() {
-        this.getSpendingsData()
-    }
+
     render() {
+        const url = '/spendings'
         const columns = [{
             Header: 'Id',
             accessor: 'id',
@@ -42,11 +27,7 @@ export default class SpendingsFullTable extends Component {
         }
         ]
         return (
-
-            <ReactTable
-                data={this.state.spendings}
-                columns={columns}
-            />
+            <FullTable url={url} columns={columns} />
         )
     }
 }

@@ -1,4 +1,5 @@
 from django.db import models
+from constants import cts
 
 
 class SpendTypes(models.Model):
@@ -13,10 +14,11 @@ class SpendTypes(models.Model):
     name = models.CharField(max_length=50, null=False)
 
     class Meta:
-        db_table = "spend_types"
+        db_table = f'"{cts.DATASCHEMA}"."spend_types"'
 
     def __str__(self):
         return "{} - {}".format(self.id, self.name)
+
 
 class Spends(models.Model):
     """
@@ -34,4 +36,4 @@ class Spends(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
-        db_table = "spends"
+        db_table = f'"{cts.DATASCHEMA}"."spends"'
