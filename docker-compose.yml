@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 services:
   postgres:
     image: "postgres"
@@ -35,3 +35,15 @@ services:
       - ./django-backend/app/:/opt/
     command: sh -c "sleep 5 && python manage.py makemigrations && python manage.py migrate && ./initAdmin.sh && python manage.py runserver 0.0.0.0:8000"
     
+  frontend:
+    image: my-react
+    tty: true
+    build: ./react-frontend/.
+    container_name: frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    volumes:
+      - ./react-frontend/app/:/app
+    command: sh -c "sleep 5 && npm install --silent && npm install react-scripts@3.4.1 -g --silent && npm start --port 3000"
