@@ -1,0 +1,34 @@
+.Main {
+    display: flex;
+}
+
+.Pages {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #4b4647;
+    min-height: 100vh;
+}
+
+.Nav-bar {
+    position: relative;
+    background-color: #c34a36;
+    text-align: left;
+    padding: 0;
+    border: none;
+}
+
+
+.Sidebar-parent {
+    position: fixed;
+    background-color: #4b4647;
+    text-decoration: none;
+    width: 250px;
+    height: 100vh;
+}
+
+.behind-the-scenes {
+    width: 250px;
+
+}
+

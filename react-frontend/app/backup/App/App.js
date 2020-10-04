@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from '../../images/logo.svg';
+import logo from '../../src/images/logo.svg';
 import './App.css';
-import SpendingsFullTable from "../Spendings/SpendingsFullTable";
-import NavBar from "../NavBar/NavBar";
+import SpendingsFullTable from "../../src/components/Spendings/SpendingsFullTable";
 
 function App() {
     return (

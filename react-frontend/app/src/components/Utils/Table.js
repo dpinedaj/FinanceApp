@@ -3,7 +3,7 @@ import axios from 'axios'
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
-export default class FullTable extends Component {
+export default class Table extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -24,6 +24,7 @@ export default class FullTable extends Component {
 
             <ReactTable
                 data={this.state.data}
+                defaultPageSize={this.props.initialRows}
                 columns={this.props.columns}
             />
         )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FullTable from "../Utils/FullTable";
+import Table from "../Utils/Table";
 
 export default class SpendingsFullTable extends Component {
 
@@ -27,7 +27,7 @@ export default class SpendingsFullTable extends Component {
         }
         ]
         return (
-            <FullTable url={url} columns={columns} />
+            <Table url={url} columns={columns} initialRows={15}/>
         )
     }
 }
