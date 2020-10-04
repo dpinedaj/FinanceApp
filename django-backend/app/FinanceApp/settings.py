@@ -13,14 +13,32 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import environ
 
+# Django env
+SECRET_KEY_DEFAULT = 'kx-ib@csuc+u*x1d8*v_2$s3asz5v@k9xlg(w7*b)n74!+!z4j'
+DEBUG_DEFAULT = False
+DB_ENGINE_DEFAULT = 'django.db.backends.postgresql_psycopg2'
+DB_HOST_DEFAULT = 'localhost'
+DB_PORT_DEFAULT = 5432
+
+# Postgres Env (also for django conn)
+POSTGRES_USER_DEFAULT = 'admin'
+POSTGRES_PASSWORD_DEFAULT = 'admin'
+POSTGRES_DB_DEFAULT = 'pruebas'
+
+# pgadmin Env
+PGADMIN_DEFAULT_EMAIL_DEFAULT = 'admin@mail.com'
+PGADMIN_DEFAULT_PASSWORD_DEFAULT = 'admin'
+
+
+
+
+
 ALLOWED_HOSTS = ['*']
 
-DEBUG = os.environ.get("DEBUG", False)
-SECRET_KEY = os.environ["SECRET_KEY"]
-
+DEBUG = os.environ.get("DEBUG", DEBUG_DEFAULT)
+SECRET_KEY = os.environ.get("SECRET_KEY", SECRET_KEY_DEFAULT)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -32,7 +50,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -48,6 +65,7 @@ INSTALLED_APPS = [
     'spendings',
     'incomes',
     "investments",
+    "results"
 ]
 
 REST_FRAMEWORK = {
@@ -87,19 +105,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FinanceApp.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-         'ENGINE': os.environ['DB_ENGINE'],
-         'NAME': os.environ['POSTGRES_DB'],
-         'USER': os.environ['POSTGRES_USER'],
-         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-         'HOST': os.environ['DB_HOST'],
-         'PORT': os.environ['DB_PORT'],
-     },
+    'default': {
+        'ENGINE': os.environ.get('DB_ENGINE', DB_ENGINE_DEFAULT),
+        'NAME': os.environ.get('POSTGRES_DB', POSTGRES_DB_DEFAULT),
+        'USER': os.environ.get('POSTGRES_USER', POSTGRES_USER_DEFAULT),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', POSTGRES_PASSWORD_DEFAULT),
+        'HOST': os.environ.get('DB_HOST', DB_HOST_DEFAULT),
+        'PORT': os.environ.get('DB_PORT', DB_PORT_DEFAULT),
+    },
 }
 
 # Password validation
@@ -120,7 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -134,13 +150,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.split(BASE_DIR)[0], 'static_root')
-
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

@@ -62,7 +62,7 @@ incom_namespace = "incomes"
 router.register(incom_namespace + '/Types', IncomeTypesView)
 router.register(incom_namespace, IncomesView)
 
-#Investments
+# Investments
 invest_namespace = "investments"
 router.register(invest_namespace + '/Types', InvestmentTypesView)
 router.register(invest_namespace, InvestmentsView)

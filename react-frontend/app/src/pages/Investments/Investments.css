@@ -1,4 +1,4 @@
-.Spends {
+.Investments {
     text-align: center;
     background-color: #adaaa4;
     width: 100%;
@@ -7,12 +7,12 @@
 
 }
 
-.Spends-table {
-    width: 50%
+.Investments-table {
+    width: 100%
 }
 
 
-.Spends-header {
+.Investments-header {
     background-color: #282c34;
     min-height: 100vh;
     display: flex;
@@ -22,4 +22,5 @@
     font-size: calc(10px + 2vmin);
     color: white;
 }
+
 

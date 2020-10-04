@@ -19,6 +19,10 @@ const SidebarItems = [
         name: "Investments",
         route: '/investments'
     },
+    {
+        name: "Results",
+        route: '/results'
+    },
 ];
 
 export default SidebarItems;
