@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ApiSelect from "../../../components/Api/ApiSelect";
 
 export default class NewSpendingForm extends Component {
     constructor(props) {
@@ -20,10 +19,9 @@ export default class NewSpendingForm extends Component {
     }
 
     handleSubmit(event) {
-        const response = this.props.methodSubmit("post", "http://localhost:8000/spendings/", this.state);
-        console.log(response)
-        alert('A Spend was submitted: ' + this.state.type + ": " + this.state.amount + "status: " + response.status);
-        //event.preventDefault();
+        this.props.methodSubmit("post", "http://localhost:8000/spendings/", this.state).then(
+            res => alert('A Spend was submitted: ' + this.state.type + ": " + this.state.amount + "status: " + res.status));
+        event.preventDefault();
     }
 
     render() {
@@ -31,9 +29,13 @@ export default class NewSpendingForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Type:
-                    <ApiSelect name="type" url={"http://localhost:8000/spendingsTypes/"}/>
+                    <input
+                        type="number"
+                        value={this.state.spend_type}
+                        onChange={this.handleChange}
+                        name="spend_type"
+                    />
                 </label>
-
                 <br/>
                 <label>
                     Amount:
