@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import ApiDropdown from "../../../components/Api/ApiDropdown";
 export default class NewSpendingForm extends Component {
     constructor(props) {
         super(props);
@@ -18,6 +18,9 @@ export default class NewSpendingForm extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
 
+    handleSelect(value){
+        this.setState({spend_type: value});
+    }
     handleSubmit(event) {
         this.props.methodSubmit("post", "http://localhost:8000/spendings/", this.state).then(
             res => alert('A Spend was submitted: ' + this.state.type + ": " + this.state.amount + "status: " + res.status));
@@ -29,12 +32,7 @@ export default class NewSpendingForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Type:
-                    <input
-                        type="number"
-                        value={this.state.spend_type}
-                        onChange={this.handleChange}
-                        name="spend_type"
-                    />
+                    <ApiDropdown url="http://localhost:8000/spendingsTypes/" name="spend_type" onSelect={this.handleSelect}/>
                 </label>
                 <br/>
                 <label>
