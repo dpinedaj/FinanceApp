@@ -5,8 +5,9 @@ import Incomes from "./pages/Incomes/Incomes";
 import Investments from "./pages/Investments/Investments";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import NotFound from "./pages/NotFound/NotFound";
-import Layout from "./components/Layout/Layout";
+import Layout from "./modules/Layout/Layout";
 import Main from "./pages/Main/Main";
+import Results from "./pages/Results/Results";
 
 function Router() {
     return (
@@ -19,6 +20,7 @@ function Router() {
                         <Route path="/spendings" component={Spendings}/>
                         <Route path="/incomes" component={Incomes}/>
                         <Route path="/investments" component={Investments}/>
+                        <Route path="/results" component={Results}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </Layout>

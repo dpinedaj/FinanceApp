@@ -1,13 +1,13 @@
 import React from 'react';
-import IncomesFullTable from "../../components/Incomes/IncomesFullTable";
-import "./Incomes.css"
+import IncomesFullTable from "../../modules/Incomes/IncomesFullTable";
+import "../pages.css"
 
 function Incomes(props) {
     return (
-        <div className="Incomes">
+        <div className="core">
             <h1>Incomes</h1>
             <br/>
-            <div className="Incomes-table">
+            <div className="table">
                 <h2>Full table</h2>
                 <IncomesFullTable/>
             </div>

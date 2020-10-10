@@ -3,7 +3,7 @@ import axios from 'axios'
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
-export default class Table extends Component {
+export default class GetTable extends Component {
     constructor(props) {
         super(props)
         this.state = {

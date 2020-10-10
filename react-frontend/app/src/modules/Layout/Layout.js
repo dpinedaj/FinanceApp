@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from "./Sidebar";
 import Nav from "./Nav";
-import './Layout.css'
+import '../modules.css'
 
 function Layout(props) {
     return (

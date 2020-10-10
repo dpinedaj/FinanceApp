@@ -1,7 +1,7 @@
 FROM python:latest
 
 
-COPY ./requirements.txt /opt
+COPY ./app/requirements.txt /opt
 
 RUN pip install -r /opt/requirements.txt
 

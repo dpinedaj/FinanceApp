@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Table from "../Utils/Table";
+import GetTable from "../../components/Api/GetTable";
 
 export default class SpendingsFullTable extends Component {
 
@@ -27,7 +27,7 @@ export default class SpendingsFullTable extends Component {
         }
         ]
         return (
-            <Table url={url} columns={columns} initialRows={15}/>
+            <GetTable url={url} columns={columns} initialRows={5}/>
         )
     }
 }

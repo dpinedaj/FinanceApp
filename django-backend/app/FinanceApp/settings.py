@@ -11,11 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import environ
 
 # Django env
 SECRET_KEY_DEFAULT = 'kx-ib@csuc+u*x1d8*v_2$s3asz5v@k9xlg(w7*b)n74!+!z4j'
-DEBUG_DEFAULT = False
+DEBUG_DEFAULT = True
 DB_ENGINE_DEFAULT = 'django.db.backends.postgresql_psycopg2'
 DB_HOST_DEFAULT = 'localhost'
 DB_PORT_DEFAULT = 5432
@@ -25,17 +24,11 @@ POSTGRES_USER_DEFAULT = 'admin'
 POSTGRES_PASSWORD_DEFAULT = 'admin'
 POSTGRES_DB_DEFAULT = 'pruebas'
 
-# pgadmin Env
-PGADMIN_DEFAULT_EMAIL_DEFAULT = 'admin@mail.com'
-PGADMIN_DEFAULT_PASSWORD_DEFAULT = 'admin'
-
-
-
-
 
 ALLOWED_HOSTS = ['*']
 
-DEBUG = os.environ.get("DEBUG", DEBUG_DEFAULT)
+#DEBUG = os.environ.get("DEBUG", DEBUG_DEFAULT)
+DEBUG=True
 SECRET_KEY = os.environ.get("SECRET_KEY", SECRET_KEY_DEFAULT)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,12 +37,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -61,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'drf_yasg',
     'spendings',
     'incomes',
@@ -70,9 +58,14 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny'
     ]
 }
+# 'DEFAULT_PERMISSION_CLASSES': [
+#     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#
+# ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

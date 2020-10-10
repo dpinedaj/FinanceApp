@@ -33,7 +33,7 @@ function Sidebar(props, {defaultActive,}) {
                     {
                         SidebarItems.map((item, index)=> {
                             return (
-                                <Link to={item.route}>
+                                <Link key={item.name} to={item.route}>
                                     <SidebarItem key={item.name}
                                                  active={index === activeIndex}
                                     >

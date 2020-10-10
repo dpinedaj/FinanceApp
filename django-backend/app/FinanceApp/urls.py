@@ -34,6 +34,9 @@ from incomes.views import IncomeTypesView, IncomesView
 # Import Investments views
 from investments.views import InvestmentStatusTypesView, InvestmentPaymentsView, InvestmentsView, InvestmentTypesView
 
+# Import Results views
+from results.views import ResultsDateView, ResultsView
+
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -54,20 +57,24 @@ router.register(r'users', UserViewSet)
 
 # Spendings
 spend_namespace = "spendings"
-router.register(spend_namespace + '/Types', SpendTypesView)
+router.register(spend_namespace + 'Types', SpendTypesView)
 router.register(spend_namespace, SpendsView)
 
 # Incomes
 incom_namespace = "incomes"
-router.register(incom_namespace + '/Types', IncomeTypesView)
+router.register(incom_namespace + 'Types', IncomeTypesView)
 router.register(incom_namespace, IncomesView)
 
 # Investments
 invest_namespace = "investments"
-router.register(invest_namespace + '/Types', InvestmentTypesView)
+router.register(invest_namespace + 'Types', InvestmentTypesView)
 router.register(invest_namespace, InvestmentsView)
-router.register(invest_namespace + '/StatusTypes', InvestmentStatusTypesView)
-router.register(invest_namespace + '/Payments', InvestmentPaymentsView)
+router.register(invest_namespace + 'StatusTypes', InvestmentStatusTypesView)
+router.register(invest_namespace + 'Payments', InvestmentPaymentsView)
+
+results_namespace = "results"
+router.register(results_namespace, ResultsView)
+router.register(results_namespace + "Date", ResultsDateView)
 
 schema_view = get_schema_view(
     openapi.Info(

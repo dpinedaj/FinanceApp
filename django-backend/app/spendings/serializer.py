@@ -17,9 +17,12 @@ class SpendsSerializer(serializers.ModelSerializer):
 
         def parse_date(date):
             return "{}/{}/{}".format(date.day, date.month, date.year)
-            
+
+        def parse_money(amount):
+            return "${:,}".format(amount) if amount is not None else None
+
         return {"id": instance.id,
                 "spend_type": instance.spend_type.name,
-                "amount": instance.amount,
+                "amount": parse_money(instance.amount),
                 "description": instance.description,
                 "date": parse_date(instance.date)}

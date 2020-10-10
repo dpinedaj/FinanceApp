@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../src/images/logo.svg';
 import './App.css';
-import SpendingsFullTable from "../../src/components/Spendings/SpendingsFullTable";
+import SpendingsFullTable from "../../src/modules/Spendings/SpendingsFullTable";
 
 function App() {
     return (

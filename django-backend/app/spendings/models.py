@@ -14,7 +14,7 @@ class SpendTypes(models.Model):
     name = models.CharField(max_length=50, null=False)
 
     class Meta:
-        db_table = f'"{cts.DATASCHEMA}"."spend_types"'
+        db_table = f'"{cts.DATA_SCHEMA}"."spend_types"'
 
     def __str__(self):
         return "{} - {}".format(self.id, self.name)
@@ -36,4 +36,4 @@ class Spends(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
-        db_table = f'"{cts.DATASCHEMA}"."spends"'
+        db_table = f'"{cts.DATA_SCHEMA}"."spends"'
