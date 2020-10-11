@@ -39,7 +39,7 @@ export const Behavior = ({
                         </svg>
                     </button>
                     <div className="modal-body">
-                        <Form methodSubmit={methodSubmit}/>
+                        <Form methodSubmit={methodSubmit} closeModal={closeModal}/>
                     </div>
                 </div>
             </aside>

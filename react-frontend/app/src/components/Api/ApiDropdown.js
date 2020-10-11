@@ -1,43 +1,46 @@
-import React from "react";
-import { DropdownList } from 'react-widgets'
+import {Dropdown} from 'reactjs-dropdown-component';
+import React from 'react'
 import IApi from "./IApi";
 
-export default class ApiDropdown extends React.Component {
-    state = {
-
-        options: [],
-        selected:'',
+export default class ApiDropdown extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            spends: []
+        }
     }
-
     parseChoices(dictOfChoice) {
+        dictOfChoice.title = dictOfChoice.name
+        dictOfChoice.selected = false
+        dictOfChoice.key = 'spends'
+        dictOfChoice.id = dictOfChoice.id - 1
         return dictOfChoice
     }
 
     async getData() {
         await IApi("get", this.props.url)
             .then((response) => this.setState({
-                options: response.data.map(x => this.parseChoices(x))}));
+                spends: response.data.map(x => this.parseChoices(x))}));
     }
     componentDidMount() {
         this.getData().then(r => r)
     }
-
-    handleChange = () => {
-        const type = this.dropdown.value;
-        this.props.onSelect(type);
+    resetThenSet = (id, key) => {
+        let temp = JSON.parse(JSON.stringify(this.state[key]));
+        temp.forEach(item => item.selected = false);
+        temp[id].selected = true;
+        this.setState({
+            [key]: temp
+        });
+        this.props.onSelect(id+1, temp[id].title)
     }
-
     render() {
-        return (
-            <div>
-                <DropdownList ref={(ref) => this.dropdown = ref}
-                              data={this.state.options}
-                              valueField='id' textField='name'
-                              caseSensitive={false}
-                              minLength={3}
-                              filter='contains'
-                              onChange={this.handleChange} />
-            </div>
-        );
+        return(
+            <Dropdown
+                title="Select Spend Type"
+                list={this.state.spends}
+                resetThenSet={this.resetThenSet}
+            />
+        )
     }
 }

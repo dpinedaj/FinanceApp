@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, {Component} from 'react'
+import IApi from "./IApi";
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
@@ -11,21 +11,48 @@ export default class GetTable extends Component {
             loading: true
         }
     }
+
     async getData() {
-        const res = await axios.get(this.props.url)
-        console.log(res.data)
-        this.setState({ loading: false, data: res.data })
+        await IApi("get", this.props.url)
+            .then((response) => {
+                console.log("Status Code: " + response.status);
+                this.setState({
+                    data: response.data, loading: false
+                });
+            })
     }
+
     componentDidMount() {
         this.getData().then(r => r)
     }
+
+    async handleDelete(row) {
+        let url = this.props.url + "/" + row.id
+        await IApi("delete", url).then(response => {
+            alert("Deleted the row with id: " + row.id + "\nStatus code: " + response.status)
+        })
+    }
+
     render() {
+        const columns =
+            [
+                ...this.props.columns,
+                {
+                    Header: '',
+                    Cell: row => (
+                        <div>
+                            <button onClick={() => this.handleDelete(row.row)}>Delete</button>
+                        </div>
+                    )
+                }
+            ]
+
         return (
 
             <ReactTable
                 data={this.state.data}
                 defaultPageSize={this.props.initialRows}
-                columns={this.props.columns}
+                columns={columns}
             />
         )
     }

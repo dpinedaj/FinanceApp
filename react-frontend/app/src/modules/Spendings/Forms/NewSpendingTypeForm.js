@@ -16,10 +16,11 @@ export default class NewSpendingTypeForm extends Component {
     }
 
     handleSubmit(event) {
-        const response = this.props.methodSubmit("post", "http://localhost:8000/spendingsTypes/", this.state);
+        const response = this.props.methodSubmit("post", "http://localhost:8000/spendingsTypes/", this.state).then(
+            res => alert('Submitted a New Spend Type: ' + this.state.name + "\nThe post status code: " + res.status));
         console.log(response)
-        //alert('A Spend was submitted: ' + this.state.type + ": " + this.state.amount + "status: " + response.status);
         event.preventDefault();
+        this.props.closeModal();
     }
 
     render() {
