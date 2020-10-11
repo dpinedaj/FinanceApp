@@ -31,6 +31,7 @@ export default class GetTable extends Component {
         await IApi("delete", url).then(response => {
             alert("Deleted the row with id: " + row.id + "\nStatus code: " + response.status)
         })
+        await document.location.reload();
     }
 
     render() {

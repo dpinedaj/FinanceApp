@@ -10,6 +10,7 @@ export default class ApiDropdown extends React.Component{
         }
     }
     parseChoices(dictOfChoice) {
+        //TODO MAKE IT MORE DYNAMIC
         dictOfChoice.title = dictOfChoice.name
         dictOfChoice.selected = false
         dictOfChoice.key = 'spends'
