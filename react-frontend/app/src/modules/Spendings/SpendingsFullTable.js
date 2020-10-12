@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import GetTable from "../../components/Api/GetTable";
+import {SPENDINGS_API_URL} from "../../constants";
 
 export default class SpendingsFullTable extends Component {
 
     render() {
-        const url = '/spendings'
+        const url = SPENDINGS_API_URL;
         const columns = [{
             Header: 'Id',
             accessor: 'id',

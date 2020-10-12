@@ -38,7 +38,7 @@ export default class ApiDropdown extends React.Component{
     render() {
         return(
             <Dropdown
-                title="Select Spend Type"
+                title={this.props.title}
                 list={this.state.spends}
                 resetThenSet={this.resetThenSet}
             />

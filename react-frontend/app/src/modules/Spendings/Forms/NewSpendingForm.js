@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import ApiDropdown from "../../../components/Api/ApiDropdown";
+
+
 export default class NewSpendingForm extends Component {
     constructor(props) {
         super(props);
@@ -35,7 +37,7 @@ export default class NewSpendingForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Type:
-                    <ApiDropdown url="http://localhost:8000/spendingsTypes/" name="spend_type" onSelect={this.handleSelect}/>
+                    <ApiDropdown title = "Select Spend Type" url="http://localhost:8000/spendingsTypes/" name="spend_type" onSelect={this.handleSelect}/>
                 </label>
                 <br/>
                 <label>

@@ -8,6 +8,8 @@ async function IApi(method, url, data=null) {
     } catch (error) {
         console.log("ERROR:", error)
         console.log("DATA:", data)
+        console.log("URL", url)
+        console.log("method", method)
     }
 }
 
