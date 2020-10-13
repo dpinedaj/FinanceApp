@@ -1,67 +1,63 @@
-import React, {Component} from 'react';
-import ApiDropdown from "../../../components/Api/ApiDropdown";
+import React, {Component} from 'react'
+import NewItemForm from "../../../components/Forms/NewItemForm";
+import {DEFAULT_API_URL, SPENDINGS_API_URL, SPENDINGTYPES_API_URL} from "../../../constants";
 
 
 export default class NewSpendingForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+
+    render() {
+        const path = require("path");
+        const SPENDING_URL = "http://" + path.join(DEFAULT_API_URL, SPENDINGS_API_URL) + "/";
+        const SPENDINGTYPE_URL = "http://" + path.join(DEFAULT_API_URL, SPENDINGTYPES_API_URL) + "/";
+
+        const state = {
             spend_type: '',
             spend_type_name: '',
             amount: '',
             description: ''
         };
-        this.handleSelect = this.handleSelect.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
+        const select = {
+            type: "spend_type",
+            type_name: "spend_type_name"
+        };
 
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
+        const methodArgs = {
+            method: "post",
+            url: SPENDING_URL
+        };
 
-    handleSelect(value, name){
-        this.setState({spend_type: value});
-        this.setState({spend_type_name:name})
-    }
-    handleSubmit(event) {
-        this.props.methodSubmit("post", "http://localhost:8000/spendings/", this.state).then(
-            res => alert('Submitted a Spend of type: ' + this.state.spend_type_name + "\nThe amount was:" + this.state.amount + "\nThe post status code: " + res.status));
-        event.preventDefault();
-        this.props.closeModal();
-    }
-
-    render() {
+        const fields = {
+            Type: {
+                type: "dropdown",
+                args: {
+                    title: "Select Spend Type",
+                    url: SPENDINGTYPE_URL,
+                    name: "spend_type",
+                    onSelect: "this.handleSelect"
+                }
+            },
+            Amount: {
+                type: "input",
+                args: {
+                    type: "number",
+                    value: "this.state.amount",
+                    onChange: "this.handleChange",
+                    name: "amount"
+                }
+            },
+            Description: {
+                type: "input",
+                args: {
+                    type: "text",
+                    value: "this.state.description",
+                    onChange: "this.handleChange",
+                    name: "description"
+                }
+            }
+        }
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Type:
-                    <ApiDropdown title = "Select Spend Type" url="http://localhost:8000/spendingsTypes/" name="spend_type" onSelect={this.handleSelect}/>
-                </label>
-                <br/>
-                <label>
-                    Amount:
-                    <input
-                        type="number"
-                        value={this.state.amount}
-                        onChange={this.handleChange}
-                        name="amount"
-                    />
-                </label>
-                <br/>
-                <label>
-                    Description:
-                    <input
-                        type="text"
-                        value={this.state.description}
-                        onChange={this.handleChange}
-                        name="description"
-                    />
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
-
-        );
+            <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields} methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal}/>
+        )
     }
-};
+}

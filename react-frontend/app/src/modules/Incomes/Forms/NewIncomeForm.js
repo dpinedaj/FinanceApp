@@ -3,7 +3,7 @@ import NewItemForm from "../../../components/Forms/NewItemForm";
 import {DEFAULT_API_URL, INCOMES_API_URL, INCOMESTYPE_API_URL} from "../../../constants";
 
 
-export default class NewIncomesForm extends Component {
+export default class NewIncomeForm extends Component {
 
     render() {
         const path = require("path");
@@ -55,7 +55,7 @@ export default class NewIncomesForm extends Component {
             }
         }
         return (
-            <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields}/>
+            <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields} methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal}/>
         )
     }
 }

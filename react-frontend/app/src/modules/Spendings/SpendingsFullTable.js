@@ -28,7 +28,7 @@ export default class SpendingsFullTable extends Component {
         }
         ]
         return (
-            <GetTable url={url} columns={columns} initialRows={5}/>
+            <GetTable url={url} columns={columns} initialRows={10}/>
         )
     }
 }

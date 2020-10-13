@@ -2,7 +2,7 @@ import React from 'react';
 import IncomesFullTable from "../../modules/Incomes/IncomesFullTable";
 import "../pages.css"
 import InsertNewModal from "../../components/Buttons/InsertNewModal";
-import NewIncomesForm from "../../modules/Incomes/Form/NewIncomesForm";
+import NewIncomeForm from "../../modules/Incomes/Forms/NewIncomeForm";
 
 function Incomes(props) {
     return (
@@ -12,7 +12,7 @@ function Incomes(props) {
             <div className="table">
                 <h2>Full table</h2>
                 <IncomesFullTable/>
-                <InsertNewModal text={"New Income"} form={NewIncomesForm}/>
+                <InsertNewModal text={"New Income"} form={NewIncomeForm}/>
             </div>
         </div>
     );

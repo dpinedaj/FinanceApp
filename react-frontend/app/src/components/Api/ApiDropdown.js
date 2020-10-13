@@ -6,14 +6,14 @@ export default class ApiDropdown extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            spends: []
+            options: []
         }
     }
     parseChoices(dictOfChoice) {
         //TODO MAKE IT MORE DYNAMIC
         dictOfChoice.title = dictOfChoice.name
         dictOfChoice.selected = false
-        dictOfChoice.key = 'spends'
+        dictOfChoice.key = 'options'
         dictOfChoice.id = dictOfChoice.id - 1
         return dictOfChoice
     }
@@ -21,7 +21,7 @@ export default class ApiDropdown extends React.Component{
     async getData() {
         await IApi("get", this.props.url)
             .then((response) => this.setState({
-                spends: response.data.map(x => this.parseChoices(x))}));
+                options: response.data.map(x => this.parseChoices(x))}));
     }
     componentDidMount() {
         this.getData().then(r => r)
@@ -36,10 +36,10 @@ export default class ApiDropdown extends React.Component{
         this.props.onSelect(id+1, temp[id].title)
     }
     render() {
-        return(
+         return(
             <Dropdown
                 title={this.props.title}
-                list={this.state.spends}
+                list={this.state.options}
                 resetThenSet={this.resetThenSet}
             />
         )
