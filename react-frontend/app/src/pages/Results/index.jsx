@@ -2,7 +2,7 @@ import React from 'react';
 import ResultsFullTable from "../../modules/Results/ResultsFullTable";
 import "../pages.css"
 
-function Results(props) {
+function Index(props) {
     return (
         <div className="core">
             <h1>Results</h1>
@@ -15,4 +15,4 @@ function Results(props) {
     );
 }
 
-export default Results;
+export default Index;

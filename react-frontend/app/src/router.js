@@ -1,13 +1,13 @@
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Layout from "./modules/Layout/Layout";
-import Spendings from "./pages/Spendings/Spendings";
-import Incomes from "./pages/Incomes/Incomes";
-import Investments from "./pages/Investments/Investments";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import NotFound from "./pages/NotFound/NotFound";
-import Main from "./pages/Main/Main";
-import Results from "./pages/Results/Results";
+import Spendings from "./pages/Spendings";
+import Incomes from "./pages/Incomes";
+import Investments from "./pages/Investments";
+import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
+import Main from "./pages/Main";
+import Results from "./pages/Results";
 
 function Router() {
     return (

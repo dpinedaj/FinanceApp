@@ -1,8 +1,9 @@
 from django.db import models
+from datetime import datetime, timedelta
 from constants import cts
 from spendings.models import Spends
 from incomes.models import Incomes
-from datetime import datetime, timedelta
+from investments.models import Investments
 
 
 # Create your models here.
@@ -24,9 +25,15 @@ class Results(models.Model):
     account_balance = models.IntegerField(null=True)
     details = models.CharField(max_length=255, null=True)
 
+    # TODO ON DEVELOP
     @property
     def investments(self):
-        return
+        return sum(
+            inv.amount for inv in Investments.objects
+                .filter(open_date__gt=datetime(self.date.year, self.date.month, 1))
+                .filter(open_date__lt=datetime(self.date.year, self.date.month, 1) + timedelta(days=30))
+                .all()
+        )
 
     @property
     def incomes(self):

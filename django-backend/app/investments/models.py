@@ -45,8 +45,8 @@ class Investments(models.Model):
     amount = models.IntegerField(null=False)
     description = models.CharField(max_length=255)
     status = models.ForeignKey("InvestmentStatusTypes", on_delete=models.DO_NOTHING, db_column="status", default=1)
-    open_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    next_payment = models.DateTimeField(null=False)
+    open_date = models.DateTimeField(null=True)
+    next_payment = models.DateTimeField(null=True)
     close_date = models.DateTimeField(null=True)
 
     class Meta:

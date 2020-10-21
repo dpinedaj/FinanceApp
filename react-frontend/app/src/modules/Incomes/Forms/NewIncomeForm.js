@@ -17,8 +17,10 @@ export default class NewIncomeForm extends Component {
             description: ''
         };
         const select = {
-            type: "income_type",
-            type_name: "income_type_name"
+            income_type: {
+                type: "income_type",
+                type_name: "income_type_name"
+            }
         };
 
         const methodArgs = {
@@ -55,7 +57,8 @@ export default class NewIncomeForm extends Component {
             }
         }
         return (
-            <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields} methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal}/>
+            <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields}
+                         methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal}/>
         )
     }
 }

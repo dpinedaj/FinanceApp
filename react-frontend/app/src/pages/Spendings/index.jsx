@@ -6,7 +6,7 @@ import NewSpendingTypeForm from "../../modules/Spendings/Forms/NewSpendingTypeFo
 
 import "../pages.css"
 
-function Spendings(props) {
+function Index(props) {
     return (
         <div className="core">
             <h1>Spendings</h1>
@@ -21,4 +21,4 @@ function Spendings(props) {
     );
 }
 
-export default Spendings;
+export default Index;

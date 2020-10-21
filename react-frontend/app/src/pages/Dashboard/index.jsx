@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Dashboard(props) {
+function Index(props) {
     console.log("Dashboard props", props);
     return (
         <div>
@@ -10,4 +10,4 @@ function Dashboard(props) {
     );
 }
 
-export default Dashboard;
+export default Index;

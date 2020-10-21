@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NotFound = props => {
+const Index = props => {
     return (
         <div>
             <h1>You took a wrong turn, mate.</h1>
@@ -8,4 +8,4 @@ const NotFound = props => {
     );
 };
 
-export default NotFound;
+export default Index;

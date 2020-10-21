@@ -33,7 +33,7 @@ export default class ApiDropdown extends React.Component{
         this.setState({
             [key]: temp
         });
-        this.props.onSelect(id+1, temp[id].title)
+        this.props.onSelect(this.props.name, id+1, temp[id].title)
     }
     render() {
          return(

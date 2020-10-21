@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from incomes.models import Incomes, IncomeTypes
+from utils.parsers import parse_money, parse_date
 
 
 class IncomeTypesSerializer(serializers.ModelSerializer):
@@ -14,12 +15,6 @@ class IncomesSerializer(serializers.ModelSerializer):
         fields = ['id', 'income_type', 'amount', 'description', 'date']
 
     def to_representation(self, instance):
-        def parse_date(date):
-            return "{}/{}/{}".format(date.day, date.month, date.year)
-
-        def parse_money(amount):
-            return "${:,}".format(amount) if amount is not None else None
-
         return {"id": instance.id,
                 "income_type": instance.income_type.name,
                 "amount": parse_money(instance.amount),

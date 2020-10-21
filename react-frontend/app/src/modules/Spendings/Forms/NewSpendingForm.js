@@ -18,8 +18,10 @@ export default class NewSpendingForm extends Component {
         };
 
         const select = {
-            type: "spend_type",
-            type_name: "spend_type_name"
+            spend_type: {
+                type: "spend_type",
+                type_name: "spend_type_name"
+            }
         };
 
         const methodArgs = {
@@ -57,7 +59,8 @@ export default class NewSpendingForm extends Component {
             }
         }
         return (
-            <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields} methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal}/>
+            <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields}
+                         methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal}/>
         )
     }
 }

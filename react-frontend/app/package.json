@@ -10,7 +10,9 @@
     "axios": "^0.20.0",
     "focus-trap-react": "^8.1.0",
     "lodash.noop": "^3.0.1",
+    "moment": "^2.29.1",
     "react": "^16.13.1",
+    "react-date-picker": "^8.0.3",
     "react-dom": "^16.13.1",
     "react-dropdown-input": "^0.1.11",
     "react-fontawesome": "^1.7.1",
@@ -48,6 +50,7 @@
   "devDependencies": {
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",
+    "react-moment": "^1.0.0",
     "react-router-dom": "^5.2.0",
     "semantic-ui-react": "^2.0.0"
   }
