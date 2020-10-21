@@ -26,6 +26,8 @@ POSTGRES_DB_DEFAULT = 'pruebas'
 
 
 ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 #DEBUG = os.environ.get("DEBUG", DEBUG_DEFAULT)
 DEBUG=True
@@ -149,5 +151,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.split(BASE_DIR)[0], 'static_root')
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+
