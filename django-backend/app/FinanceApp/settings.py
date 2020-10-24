@@ -24,7 +24,7 @@ POSTGRES_USER_DEFAULT = 'admin'
 POSTGRES_PASSWORD_DEFAULT = 'admin'
 POSTGRES_DB_DEFAULT = 'pruebas'
 
-
+# CORS
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'spendings',
     'incomes',
     "investments",
-    "results"
+    "results",
+    "middlewares"
 ]
 
 REST_FRAMEWORK = {
@@ -63,6 +64,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
     ]
 }
+
 # 'DEFAULT_PERMISSION_CLASSES': [
 #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 #
@@ -78,6 +80,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    #'middlewares.corsMiddleware.open_access_middleware'
 ]
 
 ROOT_URLCONF = 'FinanceApp.urls'
@@ -97,6 +100,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'FinanceApp.wsgi.application'
 
