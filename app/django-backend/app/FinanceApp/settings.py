@@ -12,26 +12,25 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-# Django env
-SECRET_KEY_DEFAULT = 'kx-ib@csuc+u*x1d8*v_2$s3asz5v@k9xlg(w7*b)n74!+!z4j'
-DEBUG_DEFAULT = True
-DB_ENGINE_DEFAULT = 'django.db.backends.postgresql_psycopg2'
-DB_HOST_DEFAULT = 'localhost'
-DB_PORT_DEFAULT = 5432
-
-# Postgres Env (also for django conn)
-POSTGRES_USER_DEFAULT = 'admin'
-POSTGRES_PASSWORD_DEFAULT = 'admin'
-POSTGRES_DB_DEFAULT = 'pruebas'
 
 # CORS
-ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+ALLOWED_HOSTS = eval(os.environ.get('ALLOWED_HOSTS', "['*']"))
+CORS_ORIGIN_ALLOW_ALL = bool(int(os.environ.get('CORS_ORIGIN_ALLOW_ALL', '1')))
+CORS_ALLOW_CREDENTIALS = bool(int(os.environ.get('CORS_ALLOW_CREDENTIALS', '1')))
 
-#DEBUG = os.environ.get("DEBUG", DEBUG_DEFAULT)
-DEBUG=True
-SECRET_KEY = os.environ.get("SECRET_KEY", SECRET_KEY_DEFAULT)
+
+# VARIABLES
+# Django
+DEBUG = bool(int(os.environ.get('DEBUG', '1')))
+SECRET_KEY = os.environ.get('SECRET_KEY', 'kx-ib@csuc+u*x1d8*v_2$s3asz5v@k9xlg(w7*b)n74!+!z4j')
+
+# DataBase
+DB_ENGINE=os.environ.get('DB_ENGINE', 'django.db.backends.postgresql_psycopg2')
+POSTGRES_DB=os.environ.get('POSTGRES_DB', 'pruebas')
+POSTGRES_USER=os.environ.get('POSTGRES_USER', 'admin')
+POSTGRES_PASSWORD=os.environ.get('POSTGRES_PASSWORD', 'admin')
+DB_HOST=os.environ.get('DB_HOST', 'localhost')
+DB_PORT=int(os.environ.get('DB_PORT', 5432))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -109,12 +108,12 @@ WSGI_APPLICATION = 'FinanceApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', DB_ENGINE_DEFAULT),
-        'NAME': os.environ.get('POSTGRES_DB', POSTGRES_DB_DEFAULT),
-        'USER': os.environ.get('POSTGRES_USER', POSTGRES_USER_DEFAULT),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', POSTGRES_PASSWORD_DEFAULT),
-        'HOST': os.environ.get('DB_HOST', DB_HOST_DEFAULT),
-        'PORT': os.environ.get('DB_PORT', DB_PORT_DEFAULT),
+        'ENGINE': DB_ENGINE,
+        'NAME': POSTGRES_DB,
+        'USER': POSTGRES_USER,
+        'PASSWORD': POSTGRES_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     },
 }
 
