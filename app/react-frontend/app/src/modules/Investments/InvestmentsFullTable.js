@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import GetTable from "../../components/Api/GetTable";
+import {INVESTMENTS_API_URL} from "../../constants";
 
 export default class InvestmentsFullTable extends Component {
 
     render() {
-        const url = '/investments'
+        const url = INVESTMENTS_API_URL
         const columns = [{
             Header: 'Id',
             accessor: 'id',

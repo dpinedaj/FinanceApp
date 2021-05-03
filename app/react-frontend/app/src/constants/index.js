@@ -9,3 +9,5 @@ export const SPENDINGTYPES_API_URL = "/spendingsTypes";
 export const INVESTMENTS_API_URL = "/investments"
 export const INVESTMENTTYPES_API_URL = "/investmentsTypes"
 export const INVESTMENTSTATUSTYPES_API_URL = "/investmentsStatusTypes"
+//Results
+export const RESULTS_API_URL = "/results"

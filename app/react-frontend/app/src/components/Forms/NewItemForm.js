@@ -21,16 +21,17 @@ export default class NewItemForm extends Component {
         this.setState({[this.props.select[var_name]["type"]]: value});
         this.setState({[this.props.select[var_name]["type_name"]]: name})
     };
+
     handleDate(var_name, date_name, date){
         const moment = require("moment");
-        const strDate = moment(date).format("DD/MM/yyyy")
+        const strDate = moment(date).format("YYYY-MM-DD")
         this.setState({[var_name]: strDate})
         this.setState({[date_name]: date})
     }
     handleSubmit(event) {
         const methodArgs = Object.keys(this.props.methodArgs).map(x => this.props.methodArgs[x])
         this.props.methodSubmit(...[...methodArgs, this.state]).then(
-            res => alert('Submitted an: ' + [this.state[this.props.select["type_name"]]] + "\nThe amount was:" + this.state.amount + "\nThe post status code: " + res.status));
+            res => alert("Submitted\nThe amount was:" + this.state.amount + "\nThe post status code: " + res.status));
         event.preventDefault();
         this.props.closeModal();
     };

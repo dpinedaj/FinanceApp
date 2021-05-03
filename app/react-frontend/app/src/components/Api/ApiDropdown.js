@@ -36,12 +36,18 @@ export default class ApiDropdown extends React.Component{
         this.props.onSelect(this.props.name, id+1, temp[id].title)
     }
     render() {
+        if (this.state.options.length > 0) {
          return(
             <Dropdown
                 title={this.props.title}
                 list={this.state.options}
                 resetThenSet={this.resetThenSet}
             />
-        )
+        )}
+        else {
+            return(
+                <div><h1>There are no types</h1></div>
+            )
+        }
     }
 }

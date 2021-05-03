@@ -17,18 +17,18 @@ export default class NewInvestmentForm extends Component {
         const INVESTMENTSTATUSTYPE_URL = "http://" + path.join(DEFAULT_API_URL, INVESTMENTSTATUSTYPES_API_URL) + "/";
 
         const state = {
-            investment_type: null,
-            investment_type_name: null,
-            amount: null,
-            description: null,
-            status: null,
-            status_name: null,
-            open_date: null,
-            open_s_date: null,
-            next_payment:null,
-            next_s_payment:null,
-            close_date:null,
-            close_s_date:null
+            investment_type: '',
+            investment_type_name: '',
+            amount: '',
+            description: '',
+            status: '',
+            status_name: '',
+            open_date: '',
+            open_s_date: '',
+            next_payment: null,
+            next_s_payment: null,
+            close_date: null,
+            close_s_date: null
         };
 
         const select = {

@@ -4,7 +4,7 @@ from constants import cts
 from spendings.models import Spends
 from incomes.models import Incomes
 from investments.models import Investments
-
+from constants import cts
 
 # Create your models here.
 class ResultsDate(models.Model):
@@ -30,8 +30,8 @@ class Results(models.Model):
     def investments(self):
         return sum(
             inv.amount for inv in Investments.objects
-                .filter(open_date__gt=datetime(self.date.year, self.date.month, 1))
-                .filter(open_date__lt=datetime(self.date.year, self.date.month, 1) + timedelta(days=30))
+                .filter(open_date__gt=datetime(self.date.year, self.date.month, 1, tzinfo=cts.TIMEZONE))
+                .filter(open_date__lt=datetime(self.date.year, self.date.month + 1, 1, tzinfo=cts.TIMEZONE))
                 .all()
         )
 
@@ -39,8 +39,8 @@ class Results(models.Model):
     def incomes(self):
         return sum(
             inc.amount for inc in Incomes.objects
-                .filter(date__gt=datetime(self.date.year, self.date.month, 1))
-                .filter(date__lt=datetime(self.date.year, self.date.month, 1) + timedelta(days=30))
+                .filter(date__gt=datetime(self.date.year, self.date.month, 1, tzinfo=cts.TIMEZONE))
+                .filter(date__lt=datetime(self.date.year, self.date.month + 1, 1, tzinfo=cts.TIMEZONE))
                 .exclude(income_type__name__in=cts.EXCLUDING_INCOMES)
                 .all())
 
@@ -48,8 +48,8 @@ class Results(models.Model):
     def spendings(self):
         return sum(
             sp.amount for sp in Spends.objects
-                .filter(date__gt=datetime(self.date.year, self.date.month, 1))
-                .filter(date__lt=datetime(self.date.year, self.date.month, 1) + timedelta(days=30))
+                .filter(date__gt=datetime(self.date.year, self.date.month, 1, tzinfo=cts.TIMEZONE))
+                .filter(date__lt=datetime(self.date.year, self.date.month + 1, 1, tzinfo=cts.TIMEZONE))
                 .exclude(spend_type__name__in=cts.EXCLUDING_SPENDS)
                 .all())
 
@@ -57,8 +57,8 @@ class Results(models.Model):
     def outcomes(self):
         return sum(
             sp.amount for sp in Spends.objects
-                .filter(date__gt=datetime(self.date.year, self.date.month, 1))
-                .filter(date__lt=datetime(self.date.year, self.date.month, 1) + timedelta(days=30))
+                .filter(date__gt=datetime(self.date.year, self.date.month, 1, tzinfo=cts.TIMEZONE))
+                .filter(date__lt=datetime(self.date.year, self.date.month + 1, 1, tzinfo=cts.TIMEZONE))
                 .all())
 
     @property
