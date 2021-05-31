@@ -8,6 +8,10 @@ export default class ResultsFullTable extends Component {
         const url = RESULTS_API_URL
         const columns = [
             {
+                Header: 'Id',
+                accessor: 'id',
+            },
+            {
                 Header: 'Date',
                 accessor: 'date',
             },

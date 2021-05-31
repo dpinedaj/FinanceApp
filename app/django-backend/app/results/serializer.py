@@ -16,9 +16,11 @@ class ResultsSerializer(serializers.ModelSerializer):
         fields = ['id', 'date', 'spendings']
 
     def to_representation(self, instance):
-        return {"date": parse_date(instance.date),
+        return {"id": instance.id,
+                "date": parse_date(instance.date),
                 "account_balance": parse_money(instance.account_balance),
                 "investments": parse_money(instance.investments),
                 "incomes": parse_money(instance.incomes),
                 "spendings": parse_money(instance.spendings),
-                "outcomes": parse_money(instance.outcomes)}
+                "outcomes": parse_money(instance.outcomes),
+                "balance": parse_money(instance.balance)}

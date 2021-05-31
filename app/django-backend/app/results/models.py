@@ -67,7 +67,7 @@ class Results(models.Model):
 
     @property
     def balance(self):
-        return
+        return self.incomes - self.spendings
 
     @property
     def saving(self):

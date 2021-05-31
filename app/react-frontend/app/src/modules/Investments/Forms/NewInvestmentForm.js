@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import NewItemForm from "../../../components/Forms/NewItemForm";
 import {
     DEFAULT_API_URL,
@@ -87,19 +87,27 @@ export default class NewInvestmentForm extends Component {
                     }
                 },
                 "Open Date": {
-                    type:"date",
+                    type: "date",
                     args: {
-                        value:"this.state.open_s_date",
+                        value: "this.state.open_s_date",
                         onChange: "{date => this.handleDate('open_date', 'open_s_date', date)}",
-                        name:"open_date"
+                        name: "open_date"
                     }
-        }
+                },
+                "Close Date": {
+                    type: "date",
+                    args: {
+                        value: "this.state.open_s_date",
+                        onChange: "{date => this.handleDate('close_date', 'close_s_date', date)}",
+                        name: "close_date"
+                    }
+                }
             }
 
         return (
 
             <NewItemForm state={state} select={select} methodArgs={methodArgs} fields={fields}
-                         methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal}/>
+                methodSubmit={this.props.methodSubmit} closeModal={this.props.closeModal} />
         )
     }
 }

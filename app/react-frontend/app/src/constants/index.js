@@ -11,3 +11,4 @@ export const INVESTMENTTYPES_API_URL = "/investmentsTypes"
 export const INVESTMENTSTATUSTYPES_API_URL = "/investmentsStatusTypes"
 //Results
 export const RESULTS_API_URL = "/results"
+export const RESULTS_DATE_API_URL = "/resultsDate"

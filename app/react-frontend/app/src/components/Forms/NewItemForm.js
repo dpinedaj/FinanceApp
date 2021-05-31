@@ -41,6 +41,7 @@ export default class NewItemForm extends Component {
             const newArgs = {};
             Object.keys(val.args).forEach(x =>
                 // eslint-disable-next-line no-eval
+                // TODO CHANGE THE "THIS" OR {} BY A ENUM WITH REFERENCE EQUIVALENCE
                 newArgs[x] = (val.args[x].startsWith("this") || val.args[x].startsWith("{")) ? (eval(val.args[x])) : (val.args[x]))
             if (val.type === "dropdown") {
                 return <label key={k}>
